@@ -1,3 +1,4 @@
+
 header{
   height:150px;
   display: flex;
@@ -28,4 +29,24 @@ header{
   border: none;
   background-color: rgb(61, 244, 125);
   font-size: 30px;
+}
+.todoList{
+  height: auto;
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  list-style-type: none;
+}
+.todoItem{
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.deleteBtn{
+  border: none;
+  width:30px
 }
