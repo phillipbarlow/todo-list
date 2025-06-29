@@ -5,3 +5,27 @@ header{
   align-items: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+.addTodoForm{
+  height: 150px;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%
+}
+.addTodoForm > input[type='text']{
+  width: 600px;
+  height:50px;
+  border-radius: 10px;
+  border:none;
+  background-color: rgb(244, 245, 245);
+}
+
+.addTodoForm > button{
+  margin-left: -20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: none;
+  background-color: rgb(61, 244, 125);
+  font-size: 30px;
+}
