@@ -50,3 +50,7 @@ header{
   border: none;
   width:30px
 }
+.completeTask{
+  text-decoration: line-through;
+  color: gray;
+}

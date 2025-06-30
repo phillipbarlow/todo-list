@@ -11,16 +11,20 @@ function App() {
     )
   }
   function handleDelete(target){
-    console.log(target)
     return(
-      setTodos((curr)=> curr.filter(item => item.id !== target.id))
+      setTodos((curr)=> curr.filter(item => item.id !== target))
+    )
+  }
+  function handleCompletedTask(target){
+    return(
+      setTodos((curr)=> curr.map((task)=> target === task.id? {...task,completed:!task.completed}:task))
     )
   }
   return (
     <div className="App">
       <Header />
       <AddTodoForm setInput={setTodos} onAddTodo={handleAddTodo}/>
-      <TodoList todos={todos} onDelete={handleDelete}/>
+      <TodoList todos={todos} onDelete={handleDelete} onCompletedTask={handleCompletedTask}/>
     </div>
   );
 }
