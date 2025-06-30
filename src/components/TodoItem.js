@@ -1,15 +1,18 @@
 
-export default function TodoItem({todo, onDelete,onCompletedTask}){
+export default function TodoItem({todos, onDelete,onCompletedTask,onEdit}){
     return(
         <>
         <li className= "todoItem">
-            <section className={todo.completed? "todoItem completeTask": "todoItem"} onClick={()=>onCompletedTask(todo.id)}>
-                {todo.text}
+            <section className={todos.completed? "todoItem completeTask": "todoItem"} onClick={()=>onCompletedTask(todos.id)}>
+                {todos.text}
             </section>
-            <button className="deleteBtn" onClick={()=>onDelete(todo.id)}>
+            <button className="deleteBtn" onClick={()=>onDelete(todos.id)}>
                 ❌
             </button>
         </li>
+        <button onClick={()=>onEdit(todos.id)}>
+            Edit {todos.text}
+        </button>
         </>
     )
 }

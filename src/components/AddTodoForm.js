@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-export default function AddTodoForm({onAddTodo}){
-    const [input,setInput] = useState('')
+export default function AddTodoForm({onAddTodo, input, setInput}){
+    
     const newTodo = {
       id:Date.now(),
       text:input,
