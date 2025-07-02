@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export default function AddTodoForm({onAddTodo, input, setInput}){
     
     const newTodo = {
@@ -14,7 +12,7 @@ export default function AddTodoForm({onAddTodo, input, setInput}){
     }
     return(
         <form className="addTodoForm" onSubmit={handleSubmit}>
-            <input type="text" value={input}  onChange={(e)=>setInput(e.target.value)}/>
+            <input type="text" value={input} onChange={(e)=>setInput(e.target.value)}/>
             <button>+</button>
         </form>
     )

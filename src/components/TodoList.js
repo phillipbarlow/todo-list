@@ -1,9 +1,10 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({todos, onDelete,onCompletedTask,onEdit}){
+export default function TodoList({todos, onDelete,onCompletedTask}){
+    
     return(
         <ul className="todoList">
-            {todos.map((todo)=><TodoItem todos={todo} key={todo.id} onDelete={onDelete} onCompletedTask={onCompletedTask} onEdit={onEdit}/>)}
+            {todos.map((todo)=><TodoItem todos={todo} key={todo.id} onDelete={onDelete} onCompletedTask={onCompletedTask}/>)}
         </ul>
     )
 }
