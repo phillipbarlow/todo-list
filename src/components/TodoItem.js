@@ -1,8 +1,8 @@
 import { useState } from "react"
-export default function TodoItem({todos, onDelete,onCompletedTask}){
+export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
     const [edit,setEdit] = useState(false)
-    const [editText,setEditText] = useState(false)
-    function handleEdit(){
+    const [editText,setEditText] = useState('')
+    function toggleEdit(){
         setEdit((curr)=> !curr)
     }
     function handleCancel(){
@@ -12,21 +12,21 @@ export default function TodoItem({todos, onDelete,onCompletedTask}){
         <>
         {edit?(
             <li className= "todoItem">
-                <input type="text" value={todos.text} onChange={(e)=>setEditText(e.target.value)}/>
+                <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)}/>
                 <section className="btn-actionContainer">
-                    <button onClick={()=>handleEdit()}>Save</button>
+                    <button onClick={()=>onEdit(todo.id,editText,setEdit)}>Save</button>
                     <button onClick={()=>handleCancel()}>Cancel</button>
                 </section>
             </li>):
             (<li className= "todoItem">
-                <section className={todos.completed? "todoItem completeTask": "todoItem"} onClick={()=>onCompletedTask(todos.id)}  >
-                    {todos.text}
+                <section className={todo.completed? "todoItem completeTask": "todoItem"} onClick={()=>onCompletedTask(todo.id)}  >
+                    {todo.text}
                 </section>
         <section className="btn-actionContainer">
-            <button onClick={()=>handleEdit()}>
+            <button onClick={()=>toggleEdit()}>
                 Edit
             </button>
-            <button className="deleteBtn" onClick={()=>onDelete(todos.id)}>
+            <button className="deleteBtn" onClick={()=>onDelete(todo.id)}>
                 Delete
             </button>
         </section>
