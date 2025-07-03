@@ -7,14 +7,15 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
     }
     function handleCancel(){
         setEdit((curr)=>!curr)
+        setEditText("")
     }
     return(
         <>
         {edit?(
             <li className= "todoItem">
-                <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)}/>
+                <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text}/>
                 <section className="btn-actionContainer">
-                    <button onClick={()=>onEdit(todo.id,editText,setEdit)}>Save</button>
+                    <button onClick={()=>onEdit(todo.id,editText,setEdit,setEditText)}>Save</button>
                     <button onClick={()=>handleCancel()}>Cancel</button>
                 </section>
             </li>):
