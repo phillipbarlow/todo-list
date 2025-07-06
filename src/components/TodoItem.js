@@ -5,23 +5,33 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
     const [submitted, setSubmitted] = useState(false)
     function toggleEdit(){
         setEdit((curr)=> !curr)
+        setEditText(todo.text)
     }
     function handleCancel(){
         setEdit((curr)=>!curr)
         setEditText("")
+        setSubmitted(false)
     }
     function handleSubmit(e){
+        const trimmed = editText.trim();
         console.log('submitted')
         e.preventDefault()
-        onEdit(todo.id,editText,setEdit,setEditText)
-        setSubmitted(true)
+        if(trimmed !== ""){
+            onEdit(todo.id,editText,setEdit,setEditText)
+            setEditText("")
+            setEdit(false)
+            setSubmitted(false)
+        }else{
+            setSubmitted(true)
+        }
     }
     return(
         <>
         {edit?(
             <li>
                 <form className= "todoItem" onSubmit={handleSubmit}>
-                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} style={{outline:editText === "" && submitted? '2px solid red':'none'}}/>
+                    <input type="text" value={editText} onChange={(e)=>{setEditText(e.target.value)
+                        if(submitted) setSubmitted(false)}} placeholder={todo.text} style={{outline:editText.trim() === "" && submitted? '2px solid red':'none'}}/>
                     <section className="btn-actionContainer">
                         <button type="submit">Save</button>
                         <button type="button" onClick={()=>handleCancel()}>Cancel</button>
