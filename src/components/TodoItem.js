@@ -21,7 +21,7 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
         {edit?(
             <li>
                 <form className= "todoItem" onSubmit={handleSubmit}>
-                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} style={{outline:editText === ""? '2px solid red':'none'}}/>
+                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} style={{outline:editText === "" && submitted? '2px solid red':'none'}}/>
                     <section className="btn-actionContainer">
                         <button type="submit">Save</button>
                         <button type="button" onClick={()=>handleCancel()}>Cancel</button>
