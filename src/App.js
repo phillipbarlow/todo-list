@@ -7,6 +7,7 @@ function App() {
   const [todos, setTodos] = useState([{id:1,text:"Buy milk", completed:false}])
   const [input,setInput] = useState('')
    function handleEdit(id,newEdit,toggleEditMode){
+    if(!newEdit) return
     setTodos((curr)=> curr.map((todo)=> todo.id === id?{...todo,text:newEdit}: todo))
     toggleEditMode(false)
   }
