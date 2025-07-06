@@ -5,10 +5,12 @@ export default function AddTodoForm({onAddTodo, input, setInput}){
         completed:false
     }
     function handleSubmit(e){
-        if (!input) return
-        e.preventDefault()
-        onAddTodo(newTodo)
-        setInput("")
+        e.preventDefault();
+       if(input.trim() !== ""){
+            onAddTodo(newTodo);
+        }else{
+            setInput('add something')
+        }
     }
     return(
         <form className="addTodoForm" onSubmit={handleSubmit}>

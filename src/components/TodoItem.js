@@ -2,6 +2,7 @@ import { useState } from "react"
 export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
     const [edit,setEdit] = useState(false)
     const [editText,setEditText] = useState('')
+    const [submitted, setSubmitted] = useState(false)
     function toggleEdit(){
         setEdit((curr)=> !curr)
     }
@@ -13,13 +14,14 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
         console.log('submitted')
         e.preventDefault()
         onEdit(todo.id,editText,setEdit,setEditText)
+        setSubmitted(true)
     }
     return(
         <>
         {edit?(
             <li>
                 <form className= "todoItem" onSubmit={handleSubmit}>
-                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} required/>
+                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} style={{outline:editText === ""? '2px solid red':'none'}}/>
                     <section className="btn-actionContainer">
                         <button type="submit">Save</button>
                         <button type="button" onClick={()=>handleCancel()}>Cancel</button>
