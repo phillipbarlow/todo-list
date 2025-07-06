@@ -8,9 +8,8 @@ export default function AddTodoForm({onAddTodo, input, setInput}){
         e.preventDefault();
        if(input.trim() !== ""){
             onAddTodo(newTodo);
-        }else{
-            setInput('add something')
         }
+        setInput("");
     }
     return(
         <form className="addTodoForm" onSubmit={handleSubmit}>
