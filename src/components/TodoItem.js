@@ -9,16 +9,25 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
         setEdit((curr)=>!curr)
         setEditText("")
     }
+    function handleSubmit(e){
+        console.log('submitted')
+        e.preventDefault()
+        onEdit(todo.id,editText,setEdit,setEditText)
+    }
     return(
         <>
         {edit?(
-            <li className= "todoItem">
-                <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text}/>
-                <section className="btn-actionContainer">
-                    <button onClick={()=>onEdit(todo.id,editText,setEdit,setEditText)}>Save</button>
-                    <button onClick={()=>handleCancel()}>Cancel</button>
-                </section>
-            </li>):
+            <li>
+                <form className= "todoItem" onSubmit={handleSubmit}>
+                    <input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)} placeholder={todo.text} required/>
+                    <section className="btn-actionContainer">
+                        <button type="submit">Save</button>
+                        <button type="button" onClick={()=>handleCancel()}>Cancel</button>
+                    </section>
+                </form>
+            </li>
+            )
+            :
             (<li className= "todoItem">
                 <section className={todo.completed? "todoItem completeTask": "todoItem"} onClick={()=>onCompletedTask(todo.id)}  >
                     {todo.text}
@@ -32,7 +41,7 @@ export default function TodoItem({onEdit,todo, onDelete,onCompletedTask}){
             </button>
         </section>
         </li>)
-}
+        }
         </>
     )
 }
